@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Flujo de Trabajo Git/GitHub</title>
+</head>
+<body>
+
+<header>
+    <h1>Flujo de Trabajo con Git y GitHub</h1>
+</header>
+
+<nav>
+    <ul>
+        <!-- Menú de navegación -->
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="git.html">Flujo de Trabajo Git/GitHub</a></li>
+        <li><a href="terminal.html">Comandos de Terminal</a></li>
+    </ul>
+</nav>
+
+<main>
+    <section>
+        <h2>Pasos Generales</h2>
+        <p>
+            A continuación se muestra un <strong>flujo de trabajo básico</strong> 
+            para usar Git y GitHub:
+        </p>
+        <ol>
+            <li>Inicializar el repositorio local con <code>git init</code>.</li>
+            <li>Crear o modificar archivos en tu proyecto.</li>
+            <li>Agregar los cambios al área de preparación con <code>git add</code>.</li>
+            <li>Guardar los cambios en el historial con <code>git commit</code>.</li>
+            <li>Vincular tu repositorio local con uno remoto usando 
+                <code>git remote add origin &lt;URL&gt;</code>.</li>
+            <li>Enviar tus cambios al repositorio remoto con <code>git push</code>.</li>
+            <li>Recibir cambios del repositorio remoto con <code>git pull</code>.</li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>Comandos Básicos de Git</h2>
+        <table border="1">
+            <tr>
+                <th>Comando</th>
+                <th>Descripción</th>
+            </tr>
+            <tr>
+                <td><code>git init</code></td>
+                <td>Inicializa un nuevo repositorio local.</td>
+            </tr>
+            <tr>
+                <td><code>git add [archivo]</code></td>
+                <td>Añade un archivo o cambios al área de preparación (staging).</td>
+            </tr>
+            <tr>
+                <td><code>git commit -m "Mensaje"</code></td>
+                <td>Guarda los cambios en el historial con un mensaje descriptivo.</td>
+            </tr>
+            <tr>
+                <td><code>git push</code></td>
+                <td>Sube los commits locales al repositorio remoto.</td>
+            </tr>
+            <tr>
+                <td><code>git pull</code></td>
+                <td>Descarga los cambios más recientes del repositorio remoto.</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>Ejemplo de Código</h2>
+        <p>Ejemplo rápido de una secuencia de comandos en Git:</p>
+        <pre>
+<code>git init
+git add .
+git commit -m "Primer commit"
+git remote add origin https://github.com/user/repo.git
+git push -u origin main
+        </code>
+        </pre>
+        <p>
+            Para más información, puedes visitar la 
+            <a href="https://git-scm.com/doc" target="_blank">Documentación Oficial de Git</a>.
+        </p>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2025 Blog de Prácticas</p>
+</footer>
+
+</body>
+</html>
