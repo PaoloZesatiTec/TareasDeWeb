@@ -1,7 +1,7 @@
 /*
  * Simple animation on the HTML canvas
  *
- * Gilberto Echeverria
+ * Paolo Zesati
  * 2025-04-21
  */
 
@@ -138,6 +138,7 @@ class Player extends AnimatedObject {
     }
 }
 
+// Class for the coin objects
 class Coin extends AnimatedObject {
     constructor(position, width, height, color, sheetCols) {
         super(position, width, height, color, "coin", sheetCols);
