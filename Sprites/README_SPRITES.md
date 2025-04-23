@@ -1,6 +1,6 @@
 # Simple HTML Canvas Game: Coin Collector
 
-This project is a simple 2D game built using **HTML5 Canvas** and **JavaScript**. The game features a player character that can move around the screen using the **WASD keys**, collect animated coins, and interact with the canvas in real time.
+This project is a simple 2D game built using **HTML** and **JavaScript**. The game features a player character that can move around the screen using the **WASD keys**, collect animated coins, and interact with the canvas in real time.
 
 ## Features
 
