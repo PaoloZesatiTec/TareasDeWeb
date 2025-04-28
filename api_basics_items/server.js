@@ -36,3 +36,7 @@ app.get('/', (req, res)=>
     // Datos locales (en memoria)
 let itemsCatalog = []; // Lista de items
 let users = [];        // Lista de usuarios
+
+app.listen(port, () => {
+    console.log(`Server running on http://localhost:${port}/`);
+});
