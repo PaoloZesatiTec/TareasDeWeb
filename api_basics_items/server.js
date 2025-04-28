@@ -37,6 +37,14 @@ app.get('/', (req, res)=>
 let itemsCatalog = []; // Lista de items
 let users = [];        // Lista de usuarios
 
+// GET: Obtener todos los items
+app.get('/api/items', (req, res) => {
+    if (itemsCatalog.length === 0) {
+        return res.status(404).json({ message: "No hay items disponibles." });
+    }
+    res.status(200).json(itemsCatalog);
+});
+
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}/`);
 });
