@@ -36,31 +36,3 @@ app.get('/', (req, res)=>
     // Datos locales (en memoria)
 let itemsCatalog = []; // Lista de items
 let users = [];        // Lista de usuarios
-
-app.post('/api/items', (req,res) => {
-    const newItems = Array.isArray(req.body) ? req.body : [req.body];
-    const messages = [];
-    for(let item of newItems){
-        const{id,nombre,tipo,efecto} = item;
-        
-        // Validar que existan todos los campos
-        if (!id || !nombre || !tipo || !efecto) {
-            return res.status(400).json({ error: "Todos los campos son obligatorios (id, nombre, tipo, efecto)." });
-        }
-        // Validar que no exista ya el item
-        if (itemsCatalog.find(existingItem => existingItem.id === id)) {
-            messages.push(`El item con ID ${id} ya existe.`);
-        } else {
-            itemsCatalog.push(item);
-            messages.push(`Item ${id} agregado exitosamente.`);
-        }
-    }
-    
-    res.status(201).json({ messages });
-});
-
-
-
-
-
-    
