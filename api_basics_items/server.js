@@ -45,6 +45,21 @@ app.get('/api/items', (req, res) => {
     res.status(200).json(itemsCatalog);
 });
 
+// GET: Obtener todos los usuarios con de items
+app.get('/api/users', (req, res) => {
+    if (users.length === 0) {
+        return res.status(404).json({ message: "No hay usuarios disponibles." });
+    }
+
+    const enrichedUsers = users.map(user => ({
+        ...user,  // copy id, nombre, correo
+        items: user.items.map(itemId => itemsCatalog.find(item => item.id === itemId))
+    }));
+
+    res.status(200).json(enrichedUsers);
+});
+
+
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}/`);
 });
