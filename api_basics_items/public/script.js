@@ -73,3 +73,30 @@ async function updateItemById() {
         console.error("Error al actualizar el item:", err);
     }
 }
+
+async function deleteItemById() {
+    const id = document.getElementById('deleteItemId').value;
+
+    if (!id) {
+        console.error("Por favor escribe un ID para eliminar.");
+        return;
+    }
+
+    try {
+        const res = await fetch(`/api/items/${id}`, {
+            method: 'DELETE'
+        });
+
+        const data = await res.json();
+
+        if (res.status === 404) {
+            console.warn("Item no encontrado:", data.message);
+        } else {
+            console.log(`Item ${id} eliminado correctamente:`, data.message);
+        }
+
+    } catch (err) {
+        console.error("Error al eliminar el item:", err);
+    }
+}
+

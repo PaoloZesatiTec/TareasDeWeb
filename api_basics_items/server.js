@@ -112,6 +112,22 @@ app.put('/api/items/:id', (req, res) => {
     res.status(200).json({ message: `Item ${itemId} actualizado.`, item: itemsCatalog[index] });
 });
 
+// DELETE: Borrar un item por ID
+app.delete('/api/items/:id', (req, res) => {
+    const itemId = req.params.id;
+    const index = itemsCatalog.findIndex(item => String(item.id) === itemId);
+
+    if (index === -1) {
+        return res.status(404).json({ message: `Item con ID ${itemId} no encontrado.` });
+    }
+
+    itemsCatalog.splice(index, 1);
+    res.status(200).json({ message: `Item ${itemId} eliminado correctamente.` });
+});
+
+
+
+
 
 
 
