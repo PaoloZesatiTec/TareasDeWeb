@@ -82,6 +82,19 @@ app.get('/api/users', (req, res) => {
     res.status(200).json(enrichedUsers);
 });
 
+// GET: Obtener un solo item por su ID
+app.get('/api/items/:id', (req, res) => {
+    const itemId = req.params.id;
+    const item = itemsCatalog.find(i => i.id === itemId);
+
+    if (!item) {
+        return res.status(404).json({ message: `Item con ID ${itemId} no encontrado.` });
+    }
+
+    res.status(200).json(item);
+});
+
+
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}/`);
