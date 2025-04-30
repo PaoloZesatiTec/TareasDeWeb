@@ -94,6 +94,25 @@ app.get('/api/items/:id', (req, res) => {
     res.status(200).json(item);
 });
 
+// PUT: Actualizar un item por ID
+app.put('/api/items/:id', (req, res) => {
+    const itemId = req.params.id;
+    const index = itemsCatalog.findIndex(item => item.id === itemId);
+
+    if (index === -1) {
+        return res.status(404).json({ message: `Item con ID ${itemId} no encontrado.` });
+    }
+
+    const { nombre, tipo, efecto } = req.body;
+
+    if (nombre) itemsCatalog[index].nombre = nombre;
+    if (tipo) itemsCatalog[index].tipo = tipo;
+    if (efecto) itemsCatalog[index].efecto = efecto;
+
+    res.status(200).json({ message: `Item ${itemId} actualizado.`, item: itemsCatalog[index] });
+});
+
+
 
 
 app.listen(port, () => {

@@ -13,21 +13,31 @@
             <tr><td>POST Items</td><td>Registrar nuevos items</td></tr>
             <tr><td>GET Items</td><td>Regresar los Items agregados</td></tr>
             <tr><td>GET Users</td><td>Regresar los Users agregados con sus Items</td></tr>
-            <tr><td>GET Item by ID</td><td>Regresar el Item por el ID de User</td></tr>
+            <tr><td>GET Item by ID</td><td>Regresar el Item por el ID</td></tr>
+            <tr><td>GET Item by ID and Update Item by PUT</td><td>Regresar el Item con Update</td></tr>
+
         </table>
     </div>
 
-    <h2>Probar API</h2>
+    <h2>Crear y Regresar Items y Users (POST and GET)</h2>
     <button onclick="testItems()">Probar Items</button>
     <button onclick="testUsers()">Probar Users</button>
 
 
 
-    <h3>Buscar Item por ID</h3>
+    <h3>Buscar Item por ID (GET)</h3>
     <input type="text" id="itemIdInput" placeholder="Escribe el ID del item">
     <button onclick="getItemById()">Buscar Item</button>
     <div id="result"></div>
 
+
+
+    <h3>Actualizar Item (GET and PUT)</h3>
+    <input type="text" id="updateItemId" placeholder="ID del item">
+    <input type="text" id="updateNombre" placeholder="Nuevo nombre">
+    <input type="text" id="updateTipo" placeholder="Nuevo tipo">
+    <input type="text" id="updateEfecto" placeholder="Nuevo efecto">
+    <button onclick="updateItemById()">Actualizar Item</button>
 
     <script src="script.js"></script>
 

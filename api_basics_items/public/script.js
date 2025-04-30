@@ -37,3 +37,39 @@ async function getItemById() {
         console.error("Error:", err);
     }
 }
+
+async function updateItemById() {
+    const id = document.getElementById('updateItemId').value;
+    const nombre = document.getElementById('updateNombre').value;
+    const tipo = document.getElementById('updateTipo').value;
+    const efecto = document.getElementById('updateEfecto').value;
+
+    if (!id) {
+        console.error("Debes escribir el ID del item a actualizar.");
+        return;
+    }
+
+    const updatedFields = {};
+    if (nombre) updatedFields.nombre = nombre;
+    if (tipo) updatedFields.tipo = tipo;
+    if (efecto) updatedFields.efecto = efecto;
+
+    try {
+        const res = await fetch(`/api/items/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updatedFields)
+        });
+
+        const data = await res.json();
+
+        if (res.status === 404) {
+            console.warn("Item no encontrado:", data.message);
+        } else {
+            console.log(`Item ${id} actualizado exitosamente:`, data.item);
+        }
+
+    } catch (err) {
+        console.error("Error al actualizar el item:", err);
+    }
+}
