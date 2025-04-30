@@ -125,6 +125,41 @@ app.delete('/api/items/:id', (req, res) => {
     res.status(200).json({ message: `Item ${itemId} eliminado correctamente.` });
 });
 
+// POST: Registrar uno o varios usuarios
+app.post('/api/users', (req, res) => {
+    const newUsers = Array.isArray(req.body) ? req.body : [req.body];
+    const messages = [];
+
+    for (let user of newUsers) {
+        const { id, nombre, correo, items } = user;
+
+        // Validar campos obligatorios
+        if (!id || !nombre || !correo || !Array.isArray(items)) {
+            return res.status(400).json({ error: "Todos los campos (id, nombre, correo, items) son obligatorios." });
+        }
+
+        // Verificar que el usuario no exista
+        if (users.find(u => u.id === id)) {
+            messages.push(`El usuario con ID ${id} ya existe.`);
+            continue;
+        }
+
+        // Verificar que los items existan en el catálogo
+        const invalidItems = items.filter(itemId => !itemsCatalog.find(i => String(i.id) === String(itemId)));
+        if (invalidItems.length > 0) {
+            messages.push(`El usuario con ID ${id} tiene items inválidos: ${invalidItems.join(', ')}`);
+            continue;
+        }
+
+        // Registrar usuario (solo IDs de items)
+        users.push({ id, nombre, correo, items });
+        messages.push(`Usuario ${id} agregado correctamente.`);
+    }
+
+    res.status(201).json({ messages });
+});
+
+
 
 
 

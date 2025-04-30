@@ -3,7 +3,7 @@ async function testItems() {
     await fetch('/api/items', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({id: '12', nombre: 'Espada', tipo: 'Arma', efecto: 'Ataque +10'})
+        body: JSON.stringify({id: 'item1', nombre: 'Espada', tipo: 'Arma', efecto: 'Ataque +10'})
     });
 
     console.log("Obteniendo todos los items...");
@@ -99,4 +99,26 @@ async function deleteItemById() {
         console.error("Error al eliminar el item:", err);
     }
 }
+
+async function testUsers() {
+    console.log("Probando creación de usuarios...");
+
+    await fetch('/api/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            id: 'user1',
+            nombre: 'Bowser',
+            correo: 'bowser@gmail.com.com',
+            items: ['item1'] 
+        })
+    });
+
+    console.log("Obteniendo todos los usuarios...");
+    const res = await fetch('/api/users');
+    const data = await res.json();
+    console.log(data);
+}
+
+
 
