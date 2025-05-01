@@ -177,7 +177,31 @@ app.get('/api/users/:id', (req, res) => {
     res.status(200).json(enrichedUser);
 });
 
+// PUT: Actualizar un usuario por ID
+app.put('/api/users/:id', (req, res) => {
+    const userId = req.params.id;
+    const index = users.findIndex(u => u.id === userId);
 
+    if (index === -1) {
+        return res.status(404).json({ message: `Usuario con ID ${userId} no encontrado.` });
+    }
+
+    const { nombre, correo, items } = req.body;
+
+    // Validar que los items existan si se mandan
+    if (items && Array.isArray(items)) {
+        const invalidItems = items.filter(itemId => !itemsCatalog.find(i => i.id === itemId));
+        if (invalidItems.length > 0) {
+            return res.status(400).json({ message: `Items inválidos: ${invalidItems.join(', ')}` });
+        }
+        users[index].items = items;
+    }
+
+    if (nombre) users[index].nombre = nombre;
+    if (correo) users[index].correo = correo;
+
+    res.status(200).json({ message: `Usuario ${userId} actualizado.`, user: users[index] });
+});
 
 
 

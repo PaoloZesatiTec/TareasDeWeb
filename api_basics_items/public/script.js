@@ -140,6 +140,38 @@ async function testGetUserById() {
     }
 }
 
+async function updateUserById() {
+    const userId = document.getElementById('getUserId').value;
+
+    if (!userId) {
+        console.error("Por favor escribe un ID de usuario.");
+        return;
+    }
+
+    const updatedUser = {
+        nombre: 'Paolo Actualizado',
+        correo: 'nuevo@correo.com',
+        items: ['item1']
+    };
+
+    console.log("Actualizando usuario...");
+    const res = await fetch(`/api/users/${userId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedUser)
+    });
+
+    const data = await res.json();
+
+    if (res.status === 404) {
+        console.warn("Usuario no encontrado:", data.message);
+    } else {
+        console.log("Usuario actualizado:", data.user);
+    }
+}
+
+
+
 
 
 
