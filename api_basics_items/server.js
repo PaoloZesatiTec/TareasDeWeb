@@ -203,6 +203,19 @@ app.put('/api/users/:id', (req, res) => {
     res.status(200).json({ message: `Usuario ${userId} actualizado.`, user: users[index] });
 });
 
+// DELETE: Eliminar un usuario por ID
+app.delete('/api/users/:id', (req, res) => {
+    const userId = req.params.id;
+    const index = users.findIndex(u => u.id === userId);
+
+    if (index === -1) {
+        return res.status(404).json({ message: `Usuario con ID ${userId} no encontrado.` });
+    }
+
+    users.splice(index, 1);
+    res.status(200).json({ message: `Usuario ${userId} eliminado correctamente.` });
+});
+
 
 
 app.listen(port, () => {

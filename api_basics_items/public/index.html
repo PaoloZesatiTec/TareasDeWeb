@@ -19,6 +19,7 @@
             <tr><td>POST Users</td><td>Registrar nuevos Users (Primero Tienes que POST Items)</td></tr>
             <tr><td>GET User by ID</td><td>Regresar un User por su ID</td></tr>
             <tr><td>Get User by ID and Update</td><td>Regresar un User por su ID con Update</td></tr>
+            <tr><td>DELETE User by ID</td><td>Borrar el User con DELETE</td></tr>
 
 
         </table>
@@ -59,6 +60,10 @@
     <br><br>
     <button onclick="updateUserById()">Actualizar Usuario</button>
 
+    <h3>Eliminar Usuario</h3>
+    <input type="text" id="getUserId" placeholder="ID del usuario a eliminar">
+    <br><br>
+    <button onclick="deleteUserById()">Eliminar Usuario</button>
 
 
 </body>
