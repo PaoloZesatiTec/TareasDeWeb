@@ -149,8 +149,8 @@ async function updateUserById() {
     }
 
     const updatedUser = {
-        nombre: 'Paolo Actualizado',
-        correo: 'nuevo@correo.com',
+        nombre: 'Paolo',
+        correo: 'paolo@correo.com',
         items: ['item1']
     };
 
@@ -170,6 +170,27 @@ async function updateUserById() {
     }
 }
 
+async function deleteUserById() {
+    const userId = document.getElementById('getUserId').value;
+
+    if (!userId) {
+        console.error("Por favor escribe un ID de usuario para eliminar.");
+        return;
+    }
+
+    console.log("Eliminando usuario...");
+    const res = await fetch(`/api/users/${userId}`, {
+        method: 'DELETE'
+    });
+
+    const data = await res.json();
+
+    if (res.status === 404) {
+        console.warn("Usuario no encontrado:", data.message);
+    } else {
+        console.log("Usuario eliminado:", data.message);
+    }
+}
 
 
 
