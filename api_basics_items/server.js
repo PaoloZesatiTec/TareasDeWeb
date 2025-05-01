@@ -159,8 +159,23 @@ app.post('/api/users', (req, res) => {
     res.status(201).json({ messages });
 });
 
+// GET: Obtener un usuario por ID con información completa de sus items
+app.get('/api/users/:id', (req, res) => {
+    const userId = req.params.id;
+    const user = users.find(u => u.id === userId);
 
+    if (!user) {
+        return res.status(404).json({ message: `Usuario con ID ${userId} no encontrado.` });
+    }
 
+    // Construimos la versión "enriquecida" con los datos completos de los items
+    const enrichedUser = {
+        ...user,
+        items: user.items.map(itemId => itemsCatalog.find(item => item.id === itemId))
+    };
+
+    res.status(200).json(enrichedUser);
+});
 
 
 

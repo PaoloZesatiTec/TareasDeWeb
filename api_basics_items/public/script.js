@@ -120,5 +120,27 @@ async function testUsers() {
     console.log(data);
 }
 
+async function testGetUserById() {
+    const userId = document.getElementById('getUserId').value;
+
+    if (!userId) {
+        console.error("Por favor escribe un ID de usuario.");
+        return;
+    }
+
+    console.log(`Buscando usuario con ID: ${userId}...`);
+
+    const res = await fetch(`/api/users/${userId}`);
+    const data = await res.json();
+
+    if (res.status === 404) {
+        console.warn("Usuario no encontrado:", data.message);
+    } else {
+        console.log("Usuario encontrado:", data);
+    }
+}
+
+
+
 
 
