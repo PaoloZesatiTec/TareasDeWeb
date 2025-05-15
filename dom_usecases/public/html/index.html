@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestor de Items y Usuarios</title>
+    <link rel="stylesheet" href="../css/dom_test.css" />
+    <script type="module" defer src="../js/dom_test.js"></script>
+  </head>
+  <body>
+    <h1>Gestor de Items y Usuarios</h1>
+
+    <h2>Registrar Nuevo Item</h2>
+    <form id="itemForm">
+      <input type="number" placeholder="ID" id="itemId" required />
+      <input type="text" placeholder="Nombre" id="itemNombre" required />
+      <input type="text" placeholder="Tipo" id="itemTipo" required />
+      <input type="text" placeholder="Efecto" id="itemEfecto" required />
+      <button type="submit">Registrar Item</button>
+    </form>
+
+    <h2>Buscar Items</h2>
+    <form id="getItemForm">
+      <input type="text" placeholder="ID (vacío para todos)" id="getItemId" />
+      <button type="submit">Buscar</button>
+    </form>
+    <ul id="itemList"></ul>
+
+    <h2>Actualizar Item</h2>
+    <form id="updateItemForm">
+      <input type="number" placeholder="ID del Item" id="updateItemId" required />
+      <input type="text" placeholder="Nuevo Nombre" id="updateItemNombre" />
+      <input type="text" placeholder="Nuevo Tipo" id="updateItemTipo" />
+      <input type="text" placeholder="Nuevo Efecto" id="updateItemEfecto" />
+      <button type="submit">Actualizar</button>
+    </form>
+
+    <h2>Eliminar Item</h2>
+    <form id="deleteItemForm">
+      <input type="number" placeholder="ID del Item" id="deleteItemId" required />
+      <button type="submit">Eliminar</button>
+    </form>
+
+    <h2>Registrar Usuario</h2>
+    <form id="userForm">
+      <input type="number" placeholder="ID" id="userId" required />
+      <input type="text" placeholder="Nombre" id="userNombre" required />
+      <input type="email" placeholder="Correo" id="userCorreo" required />
+      <input type="text" placeholder="Items (ej: 1,2)" id="userItems" required />
+      <button type="submit">Registrar Usuario</button>
+    </form>
+
+    <h2>Buscar Usuarios</h2>
+    <form id="getUserForm">
+      <input type="text" placeholder="ID (vacío para todos)" id="getUserId" />
+      <button type="submit">Buscar</button>
+    </form>
+    <ul id="userList"></ul>
+
+    <h2>Actualizar Usuario</h2>
+    <form id="updateUserForm">
+      <input type="number" placeholder="ID del Usuario" id="updateUserId" required />
+      <input type="text" placeholder="Nuevo Nombre" id="updateUserNombre" />
+      <input type="email" placeholder="Nuevo Correo" id="updateUserCorreo" />
+      <input type="text" placeholder="Nuevos Items (ej: 1,2)" id="updateUserItems" />
+      <button type="submit">Actualizar</button>
+    </form>
+
+    <h2>Eliminar Usuario</h2>
+    <form id="deleteUserForm">
+      <input type="number" placeholder="ID del Usuario" id="deleteUserId" required />
+      <button type="submit">Eliminar</button>
+    </form>
+  </body>
+</html>
+
